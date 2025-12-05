@@ -1,0 +1,326 @@
+{
+    "name": "augur-preemptive-detection",
+    "version": "1.2.0",
+    "label": "Augur Preemptive Detection",
+    "description": "Augur Preemptive Detection: This FortiSOAR connector interacts with Augur API. It provides playbook components to performs threat context enrichment for various IOC types. It also downloads Augur's unique preemptive threat intel data for advance mitigation of cyber threats.",
+    "publisher": "Augur",
+    "icon_small_name": "augur_logo_s.png",
+    "icon_large_name": "augur_logo.png",
+    "category": [
+        "Network Protection",
+        "Data Enrichment & Threat Intelligence",
+        "Firewall and Network Protection",
+        "Investigation",
+        "Threat Detection",
+        "Threat Intelligence",
+        "Threat Hunting and Search",
+        "Machine Learning"
+    ],
+    "configuration": {
+        "fields": [
+            {
+                "title": "Server URL",
+                "type": "text",
+                "name": "api_hostname",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "api.seclytics.com",
+                "description": "URL of the Seclytics server to which you will connect and perform the automated operations."
+            },
+            {
+                "title": "Access Token",
+                "type": "password",
+                "name": "access_token",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "value": "",
+                "tooltip": "Specify the access token provided by Augur to access the APIs.",
+                "description": "The access token that is provided by Seclytics to access their APIs."
+            },
+            {
+                "title": "Verify SSL",
+                "type": "checkbox",
+                "name": "verify_ssl",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": true,
+                "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+            }
+        ]
+    },
+    "operations": [
+        {
+            "title": "Get IP Reputation",
+            "operation": "get_ip_reputation",
+            "annotation": "ip_reputation",
+            "description": "Retrieves threat data from Augur API for the IP that you have submitted to determine if it is suspicious.",
+            "parameters": [
+                {
+                    "title": "ip",
+                    "type": "text",
+                    "name": "ip",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": ""
+                    "description": "Value of the IPv4 address to retrieve data from Augur API."
+                }
+            ],
+            "open": false,
+            "enabled": true,
+            "category": "investigation",
+            "output_schema": {
+                "asn": {},
+                "cidr": {},
+                "context": {
+                    "categories": {},
+                    "identifier_categories": {},
+                    "identifier_kinds": {},
+                    "identifiers": {},
+                    "malware_families": {},
+                    "reasons": {}
+                },
+                "country": {},
+                "id": "45.67.138.120",
+                "ip": {},
+                "predicted": {},
+                "prediction": {},
+                "rir": {},
+                "type": "ip"
+            }
+        },
+        {
+            "operation": "query_domain",
+            "title": "Get Domain Reputation",
+            "description": "Retrieves threat data from Augur API for the domain that you have submitted to determine if it is suspicious.",
+            "category": "investigation",
+            "annotation": "domain_reputation",
+            "output_schema": {
+                "id": "",
+                "dga": {
+                    "score": "",
+                    "is_dga": ""
+                },
+                "tld": "",
+                "type": "",
+                "domain": "",
+                "suffix": "",
+                "context": {
+                    "ips": {},
+                    "sha1": {},
+                    "urls": {},
+                    "paths": {},
+                    "reasons": {},
+                    "categories": {},
+                    "references": {},
+                    "identifiers": {},
+                    "source_urls": {},
+                    "malware_families": {}
+                },
+                "doc_ids": [],
+                "ranking": {
+                    "domcop": {
+                        "max": "",
+                        "min": "",
+                        "last": "",
+                        "current": ""
+                    },
+                    "alexa1m": {
+                        "max": "",
+                        "min": "",
+                        "last": "",
+                        "current": ""
+                    },
+                    "majestic1m": {
+                        "max": "",
+                        "min": "",
+                        "last": ""
+                    },
+                    "umbrella1m": {
+                        "max": "",
+                        "min": "",
+                        "last": "",
+                        "current": ""
+                    }
+                },
+                "hostname": "",
+                "subdomain": "",
+                "connections": [
+                    {
+                        "id": "",
+                        "type": ""
+                    }
+                ],
+                "passive_dns": [
+                    {
+                        "feed": "",
+                        "domain": "",
+                        "hostname": "",
+                        "answer_host": "",
+                        "answer_text": "",
+                        "answer_type": "",
+                        "dynamic_dns": "",
+                        "last_seen_at": "",
+                        "first_seen_at": ""
+                    }
+                ]
+            },
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Domain",
+                    "type": "text",
+                    "name": "domain",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "description": "Value of the domain to retrieve data from Augur API."
+                }
+            ],
+            "open": false
+        },
+        {
+            "operation": "query_host",
+            "title": "Get Host Reputation",
+            "description": "Retrieves threat data from Augur API for the host that you have submitted to determine if it is suspicious.",
+            "category": "investigation",
+            "annotation": "host_reputation",
+            "output_schema": {
+                "id": "",
+                "dga": {
+                    "score": "",
+                    "is_dga": ""
+                },
+                "tld": "",
+                "type": "",
+                "domain": "",
+                "suffix": "",
+                "context": {
+                    "sha1": {},
+                    "urls": {},
+                    "paths": {},
+                    "reasons": {},
+                    "categories": {},
+                    "identifiers": {},
+                    "source_urls": {},
+                    "malware_families": {}
+                },
+                "doc_ids": [],
+                "ranking": {
+                    "domcop": {
+                        "max": "",
+                        "min": "",
+                        "last": "",
+                        "current": ""
+                    },
+                    "tranco": {
+                        "max": "",
+                        "min": "",
+                        "last": "",
+                        "current": ""
+                    },
+                    "alexa1m": {
+                        "max": "",
+                        "min": "",
+                        "last": "",
+                        "current": ""
+                    },
+                    "majestic1m": {
+                        "max": "",
+                        "min": "",
+                        "last": "",
+                        "current": ""
+                    },
+                    "umbrella1m": {
+                        "max": "",
+                        "min": "",
+                        "last": "",
+                        "current": ""
+                    }
+                },
+                "hostname": "",
+                "subdomain": ""
+            },
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Host",
+                    "type": "text",
+                    "name": "host",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": ""
+                    "description": "Value of the host to retrieve data from Augur API."
+                }
+            ],
+            "open": false
+        },
+        {
+            "operation": "query_file",
+            "title": "Get File Reputation",
+            "description": "Retrieves threat data from Augur API for the file hash that you have submitted to determine if it is suspicious.",
+            "category": "investigation",
+            "annotation": "query_file",
+            "output_schema": {
+                "id": "",
+                "hash": "",
+                "type": "",
+                "hash_type": ""
+            },
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "File Hash",
+                    "type": "text",
+                    "name": "file_hash",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "description": "File hash of the file to retrieve data from Augur API."
+                }
+            ],
+            "open": false
+        },
+        {
+            "operation": "download_predictions",
+            "title": "Download Predictions",
+            "description": "Downloads default threat intel data or threat intel of a specified file.",
+            "category": "miscellaneous",
+            "annotation": "download_predictions",
+            "output_schema": {
+                "predicted_netblock": "",
+                "cluster": "",
+                "predicted_category": "",
+                "predicted_at": "",
+                "prediction_profile": "",
+                "severity": ""
+            },
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "File Name",
+                    "type": "text",
+                    "name": "file_name",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "tooltip": "Name of the file of predicted threat intel data you want to download from Augur.",
+                    "description": "(Optional) Name of the file of predicted threat intel data you want to download from Augur."
+                }
+            ],
+            "open": false
+        }
+    ],
+    "cs_compatible": true,
+    "icon_small": "connector_logo_small.png",
+    "icon_large": "connector_logo_large.png",
+    "help_online": "",
+    "vendor_version": ""
+}

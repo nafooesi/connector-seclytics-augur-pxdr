@@ -1,8 +1,8 @@
-# Seclytics FortiSOAR Connector
+# Augur FortiSOAR Connector
 
-This is Seclytics integration with Fortinet's FortiSoar product.  It provides:
-    - Get IP, Domain, Host, or File hash from the Seclytics API.
-    - Download Seclytics Prediction data from the API (for security orchestration)
+This is Augur integration with Fortinet's FortiSoar product.  It provides:
+    - Get IP, Domain, Host, or File hash from the Augur API.
+    - Download Augur Prediction data from the API (for security orchestration)
 
 ### Build
     - The code is built and tested on FortiSOAR v7.0.1-628 from our AWS instance.

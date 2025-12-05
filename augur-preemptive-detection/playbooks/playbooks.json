@@ -3,8 +3,8 @@
   "data": [
     {
       "@type": "WorkflowCollection",
-      "name": "Sample - Seclytics Augur pXDR - 1.1.0",
-      "description": "Sample playbooks for \"Seclytics Augur pXDR\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "name": "Sample - Augur Premptive Detection - 1.2.0",
+      "description": "Sample playbooks for \"Augur Premptive Detection\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "image": "/api/3/images/fce8bad8-125e-4140-b82e-0b0cbbd52279",
       "uuid": "e3316da9-5ca0-45e3-ba81-7594a1753236",
@@ -20,7 +20,7 @@
           "triggerLimit": null,
           "name": "Get File Reputation",
           "aliasName": null,
-          "tag": "#Seclytics Augur pXDR",
+          "tag": "#Augur Premptive Detection",
           "description": "Retrieves a report for the file that you have submitted using file hash.",
           "isActive": false,
           "debug": false,
@@ -39,7 +39,7 @@
               "description": null,
               "arguments": {
                 "route": "7cd30497-3bee-4f4f-9c23-d95d54c6dafc",
-                "title": "Seclytics Augur pXDR: Get File Reputation",
+                "title": "Augur Premptive Detection: Get File Reputation",
                 "resources": [
                   "alerts"
                 ],
@@ -64,13 +64,13 @@
               "name": "Get File Reputation",
               "description": null,
               "arguments": {
-                "name": "Seclytics Augur pXDR",
+                "name": "Augur Premptive Detection",
                 "config": "754e37ce-9028-4aeb-b2f6-4e3c0493e455",
                 "params": {
                   "file_hash": "3CBCFDDEC145E3382D592266BE193E5BE53443138EE6AB6CA09FF20DF609E268"
                 },
-                "version": "1.1.0",
-                "connector": "seclytics-augur-pxdr",
+                "version": "1.2.0",
+                "connector": "augur-premptive-detection",
                 "operation": "query_file",
                 "operationTitle": "Get File Reputation",
                 "step_variables": {
@@ -99,8 +99,8 @@
           "priority": null,
           "uuid": "79071468-aea8-49d8-b3ad-d2a2eed481d5",
           "recordTags": [
-            "Seclytics",
-            "seclytics-augur-pxdr"
+            "Augur",
+            "augur-premptive-detection"
           ],
           "id": 19436,
           "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
@@ -115,7 +115,7 @@
           "triggerLimit": null,
           "name": "Get Domain Reputation",
           "aliasName": null,
-          "tag": "#Seclytics Augur pXDR",
+          "tag": "#Augur Premptive Detection",
           "description": "Retrieves a report for the domains submitted, to determine if they are suspicious.",
           "isActive": false,
           "debug": false,
@@ -134,7 +134,7 @@
               "description": null,
               "arguments": {
                 "route": "43fd6358-a57a-4163-92da-96bbc99fc1fd",
-                "title": "Seclytics Augur pXDR: Get Domain Reputation",
+                "title": "Augur Premptive Detection: Get Domain Reputation",
                 "resources": [
                   "alerts"
                 ],
@@ -159,13 +159,13 @@
               "name": "Get Domain Reputation",
               "description": null,
               "arguments": {
-                "name": "Seclytics Augur pXDR",
+                "name": "Augur Premptive Detection",
                 "config": "12161385-3737-4f74-9137-fc59e2d377dc",
                 "params": {
                   "domain": "kubeitalia.it"
                 },
-                "version": "1.1.0",
-                "connector": "seclytics-augur-pxdr",
+                "version": "1.2.0",
+                "connector": "augur-preemptive-detection",
                 "operation": "query_domain",
                 "operationTitle": "Get Domain Reputation",
                 "step_variables": {
@@ -194,8 +194,8 @@
           "priority": null,
           "uuid": "7ad4251b-4775-4302-a433-2b771064e2e8",
           "recordTags": [
-            "Seclytics",
-            "seclytics-augur-pxdr"
+            "Augur",
+            "augur-premptive-detection"
           ],
           "id": 19437,
           "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
@@ -210,7 +210,7 @@
           "triggerLimit": null,
           "name": "Get Host Reputation",
           "aliasName": null,
-          "tag": "#Seclytics Augur pXDR",
+          "tag": "#Augur Premptive Detection",
           "description": "Retrieves a report for the host submitted, to determine if they are suspicious.",
           "isActive": false,
           "debug": false,
@@ -228,13 +228,13 @@
               "name": "Get Host Reputation",
               "description": null,
               "arguments": {
-                "name": "Seclytics Augur pXDR",
+                "name": "Augur Premptive Detection",
                 "config": "754e37ce-9028-4aeb-b2f6-4e3c0493e455",
                 "params": {
                   "host": "google.com"
                 },
-                "version": "1.1.0",
-                "connector": "seclytics-augur-pxdr",
+                "version": "1.2.0",
+                "connector": "augur-preventive-detection",
                 "operation": "query_host",
                 "operationTitle": "Get Host Reputation",
                 "step_variables": {
@@ -254,7 +254,7 @@
               "description": null,
               "arguments": {
                 "route": "4258ca5f-e68c-47aa-96b1-25b6b01318af",
-                "title": "Seclytics Augur pXDR: Get Host Reputation",
+                "title": "Augur Premptive Detection: Get Host Reputation",
                 "resources": [
                   "alerts"
                 ],
@@ -289,8 +289,8 @@
           "priority": null,
           "uuid": "d11b0b2c-4dee-4104-8c05-f62ee39811c2",
           "recordTags": [
-            "Seclytics",
-            "seclytics-augur-pxdr"
+            "Augur",
+            "augur-premptive-detection"
           ],
           "id": 19438,
           "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
@@ -305,8 +305,8 @@
           "triggerLimit": null,
           "name": "Download Predictions",
           "aliasName": null,
-          "tag": "#Seclytics Augur pXDR",
-          "description": "Download Seclytics Predicted threat intel data.",
+          "tag": "#Augur Premptive Detection",
+          "description": "Download Augur Predicted threat intel data.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -323,13 +323,13 @@
               "name": "Download Predictions",
               "description": null,
               "arguments": {
-                "name": "Seclytics Augur pXDR",
+                "name": "Augur Premptive Detection",
                 "config": "''",
                 "params": {
                   "file_name": ""
                 },
-                "version": "1.1.0",
-                "connector": "seclytics-augur-pxdr",
+                "version": "1.2.0",
+                "connector": "augur-preemptive-detection",
                 "operation": "download_predictions",
                 "operationTitle": "Download Predictions",
                 "step_variables": {
@@ -349,7 +349,7 @@
               "description": null,
               "arguments": {
                 "route": "3fd6371c-6430-4b15-ba64-e6bf344ca334",
-                "title": "Seclytics Augur pXDR: Download Predictions",
+                "title": "Augur Premptive Detection: Download Predictions",
                 "resources": [
                   "alerts"
                 ],
@@ -384,8 +384,8 @@
           "priority": null,
           "uuid": "d755f86e-5b72-4919-9e30-ce10390c21a1",
           "recordTags": [
-            "Seclytics",
-            "seclytics-augur-pxdr"
+            "Augur",
+            "augur-premptive-detection"
           ],
           "id": 19439,
           "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
@@ -399,7 +399,7 @@
     }
   ],
   "exported_tags": [
-    "Seclytics",
-    "seclytics-augur-pxdr"
+    "Augur",
+    "augur-preempive-detection"
   ]
 }

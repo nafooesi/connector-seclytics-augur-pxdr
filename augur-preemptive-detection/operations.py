@@ -1,17 +1,17 @@
-"""Operations module defines the actions of Seclytics Connector.
+"""Operations module defines the actions of Augur Connector.
 
-Copyright (C) 2014 - 2022 Seclytics Inc. All rights reserved.
+Copyright (C) 2014 - 2025 Augur Security Inc. All rights reserved.
 """
 import validators
-from connectors.core.connector import get_logger, ConnectorError # pylint: disable=E0401
-from .utils import Seclytics            # pylint: disable=E0402
+from connectors.core.connector import get_logger, ConnectorError  # pylint: disable=E0401
+from .utils import Augur            # pylint: disable=E0402
 from .constants import LOGGER_NAME      # pylint: disable=E0402
 
 logger = get_logger(LOGGER_NAME)
 
 
 def query_ip(config, params):
-    """Get Seclytics api for ip context."""
+    """Get Augur api for ip context."""
     ip_addr = params.get('ip')
     if isinstance(ip_addr, bytes):
         ip_addr = ip_addr.decode('utf-8')
@@ -21,11 +21,11 @@ def query_ip(config, params):
     endpoint = '/ips/' + ip_addr
     # sample code below to add a custom key
     # api_response.update({'my_custom_response_key': 'my_custom_value'})
-    return Seclytics(config).api_get(endpoint)
+    return Augur(config).api_get(endpoint)
 
 
 def query_domain(config, params):
-    """Get Seclytics api for domain context."""
+    """Get Augur api for domain context."""
     domain = params.get('domain')
     if isinstance(domain, bytes):
         domain = domain.decode('utf-8')
@@ -33,11 +33,11 @@ def query_domain(config, params):
         raise ConnectorError(f'Invalid domain {domain}')
 
     endpoint = '/domains/' + domain
-    return Seclytics(config).api_get(endpoint)
+    return Augur(config).api_get(endpoint)
 
 
 def query_host(config, params):
-    """Get Seclytics api for domain context."""
+    """Get Augur api for domain context."""
     host = params.get('host')
     if isinstance(host, bytes):
         host = host.decode('utf-8')
@@ -45,11 +45,11 @@ def query_host(config, params):
         raise ConnectorError('Missing host input')
 
     endpoint = '/hosts/' + host
-    return Seclytics(config).api_get(endpoint)
+    return Augur(config).api_get(endpoint)
 
 
 def query_file(config, params):
-    """Get Seclytics api for file hash context."""
+    """Get Augur api for file hash context."""
     file_hash = params.get('file_hash')
     if isinstance(file_hash, bytes):
         file_hash = file_hash.decode('utf-8')
@@ -57,22 +57,22 @@ def query_file(config, params):
         raise ConnectorError('Missing file_hash input')
 
     endpoint = '/files/' + file_hash
-    return Seclytics(config).api_get(endpoint)
+    return Augur(config).api_get(endpoint)
 
 
 def download_predictions(config, params):
-    """Download Seclytics prediction data."""
+    """Download Augur prediction data."""
     file_name = params.get('file_name')
     if not file_name:
         file_name = 'fortisoar_predictions.json'
     endpoint = '/bulk/private/' + file_name
 
-    return Seclytics(config).api_get(endpoint)
+    return Augur(config).api_get(endpoint)
 
 
 def check_api_health(config):
-    """Check Seclytics api access."""
-    auth_endpoint = '/files/77770000022222211333333444445555'
+    """Check Augur api access."""
+    auth_endpoint = '/status'
     # Raises an exception on unsuccessful responses
-    Seclytics(config).api_get(auth_endpoint)
+    Augur(config).api_get(auth_endpoint)
     return True

@@ -53,10 +53,11 @@
     },
     "operations": [
         {
+            "operation": "query_ip",
             "title": "Get IP Reputation",
-            "operation": "get_ip_reputation",
-            "annotation": "ip_reputation",
             "description": "Retrieves threat data from Augur API for the IP that you have submitted to determine if it is suspicious.",
+            "category": "investigation",
+            "annotation": "ip_reputation",
             "parameters": [
                 {
                     "title": "ip",
@@ -65,13 +66,12 @@
                     "required": true,
                     "visible": true,
                     "editable": true,
-                    "value": ""
+                    "value": "",
                     "description": "Value of the IPv4 address to retrieve data from Augur API."
                 }
             ],
             "open": false,
             "enabled": true,
-            "category": "investigation",
             "output_schema": {
                 "asn": {},
                 "cidr": {},
@@ -254,7 +254,7 @@
                     "required": true,
                     "visible": true,
                     "editable": true,
-                    "value": ""
+                    "value": "",
                     "description": "Value of the host to retrieve data from Augur API."
                 }
             ],

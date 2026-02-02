@@ -146,6 +146,7 @@
                         "current": ""
                     }
                 },
+                "prediction": {},
                 "hostname": "",
                 "subdomain": "",
                 "connections": [
@@ -243,7 +244,8 @@
                     }
                 },
                 "hostname": "",
-                "subdomain": ""
+                "subdomain": "",
+                "prediction": {}
             },
             "enabled": true,
             "parameters": [
@@ -270,7 +272,8 @@
                 "id": "",
                 "hash": "",
                 "type": "",
-                "hash_type": ""
+                "hash_type": "",
+                "prediction": {}
             },
             "enabled": true,
             "parameters": [

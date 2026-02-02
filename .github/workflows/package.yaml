@@ -19,13 +19,14 @@ jobs:
           echo "Creating tarball: $TAR_NAME"
           
           # This command compresses the folder and excludes git/github files
-          tar -czf "$TAR_NAME" augur-preemptive-detection \
+          tar -czf "$TAR_NAME" \
             --exclude=".git" \
             --exclude=".gitignore" \
-            --exclude=".github"
+            --exclude=".github" \
+            augur-preemptive-detection
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: augur-preemptive-detection-package
+          name: augur-preemptive-detection
           path: augur-preemptive-detection.tgz

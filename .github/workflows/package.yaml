@@ -22,3 +22,9 @@ jobs:
           -x ".gitignore" \
           -x ".github" \
           -x ".github/*"
+
+      - name: Upload ZIP as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: augur-preemptive-detection
+          path: augur-preemptive-detection.zip

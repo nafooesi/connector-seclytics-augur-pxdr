@@ -81,7 +81,9 @@
                     "identifier_kinds": {},
                     "identifiers": {},
                     "malware_families": {},
-                    "reasons": {}
+                    "reasons": {},
+                    "actors": {},
+                    "hosts": {}
                 },
                 "country": {},
                 "id": "45.67.138.120",
@@ -89,7 +91,8 @@
                 "predicted": {},
                 "prediction": {},
                 "rir": {},
-                "type": "ip"
+                "type": "ip",
+                "whitelist": ""
             }
         },
         {
@@ -114,12 +117,14 @@
                     "urls": {},
                     "paths": {},
                     "reasons": {},
+                    "actors": {},
                     "categories": {},
                     "references": {},
                     "identifiers": {},
                     "source_urls": {},
                     "malware_families": {}
                 },
+                "whitelist": "",
                 "doc_ids": [],
                 "ranking": {
                     "domcop": {
@@ -207,9 +212,11 @@
                     "reasons": {},
                     "categories": {},
                     "identifiers": {},
+                    "actors": {},
                     "source_urls": {},
                     "malware_families": {}
                 },
+                "whitelist": "",
                 "doc_ids": [],
                 "ranking": {
                     "domcop": {
@@ -273,6 +280,17 @@
                 "hash": "",
                 "type": "",
                 "hash_type": "",
+                "context": {
+                    "actors": {},
+                    "categories": {},
+                    "identifiers": {},
+                    "reasons": {},
+                    "source_urls": {},
+                    "malware_families": {},
+                    "hosts": {},
+                    "hostnames": {}
+                },
+                "whitelist": "",
                 "prediction": {}
             },
             "enabled": true,

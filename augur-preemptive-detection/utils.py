@@ -47,7 +47,7 @@ class Augur():
 
     def api_get(self, endpoint):
         """Call our rest api to retrieve data."""
-        url = f"https://{self.base_url}{endpoint}?fields=context,prediction"
+        url = f"https://{self.base_url}{endpoint}?fields=context,prediction,whitelist"
         logger.debug(url)
 
         try:

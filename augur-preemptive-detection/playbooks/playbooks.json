@@ -2,19 +2,128 @@
   "type": "workflow_collections",
   "data": [
     {
+      "@context": "/api/3/contexts/WorkflowCollection",
       "@type": "WorkflowCollection",
-      "name": "Sample - Augur Premptive Detection - 1.2.0",
-      "description": "Sample playbooks for \"Augur Premptive Detection\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "name": "Sample - Augur Preemptive Detection - 1.2.0",
+      "description": "Sample playbooks for \"Augur Preemptive Detection\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
-      "image": "/api/3/images/fce8bad8-125e-4140-b82e-0b0cbbd52279",
+      "image": "/api/3/images/4162b0cf-c0ba-4335-b2dc-0bb9c479bb7d",
       "uuid": "e3316da9-5ca0-45e3-ba81-7594a1753236",
-      "id": 1407,
-      "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-      "createDate": 1651666885,
-      "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-      "modifyDate": 1651666885,
-      "recordTags": [],
+      "id": 64,
+      "createDate": 1770200256.824543,
+      "modifyDate": 1770275411.234047,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [
+        "Augur",
+        "augur-preempive-detection"
+      ],
       "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get IP Reputation",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves threat data from Augur API for the IP that you have submitted to determine if it is suspicious.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770275427,
+          "collection": "/api/3/workflow_collections/e3316da9-5ca0-45e3-ba81-7594a1753236",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/61109eee-1697-4ecf-ac87-51f7ed6eb04e",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get IP Reputation",
+              "description": null,
+              "arguments": {
+                "name": "Augur Preemptive Detection",
+                "config": "47335693-dac5-46db-9a75-dbb39cf995a9",
+                "params": {
+                  "ip": "8.8.8.8"
+                },
+                "version": "1.2.0",
+                "connector": "augur-preemptive-detection",
+                "operation": "query_ip",
+                "operationTitle": "Get IP Reputation",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "340",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "4784763d-4aca-43de-957f-4529ef153e00"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "d122ced0-77bf-4a25-bcd4-b2cba2cc29bf",
+                "title": "Start",
+                "resources": [
+                  "incidents"
+                ],
+                "__triggerLimit": true,
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "triggerOnSource": true,
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "showToasterMessage": {
+                  "visible": false,
+                  "messageVisible": true
+                },
+                "triggerOnReplicate": false,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "40",
+              "left": "40",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "61109eee-1697-4ecf-ac87-51f7ed6eb04e"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get IP Reputation",
+              "targetStep": "/api/3/workflow_steps/4784763d-4aca-43de-957f-4529ef153e00",
+              "sourceStep": "/api/3/workflow_steps/61109eee-1697-4ecf-ac87-51f7ed6eb04e",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "fd593f96-92fd-4038-9267-e307ea6edb4a"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "23bf4fd3-8297-4509-bae1-f50869dad739",
+          "id": 551,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Augur",
+            "augur-preempive-detection"
+          ]
+        },
         {
           "@type": "Workflow",
           "triggerLimit": null,
@@ -28,11 +137,35 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1651667093,
+          "lastModifyDate": 1770276114,
           "collection": "/api/3/workflow_collections/e3316da9-5ca0-45e3-ba81-7594a1753236",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/4c19514b-6435-4efb-ba2d-ccfd9f21753c",
           "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get File Reputation",
+              "description": null,
+              "arguments": {
+                "name": "Augur Preemptive Detection",
+                "config": "47335693-dac5-46db-9a75-dbb39cf995a9",
+                "params": {
+                  "file_hash": "3CBCFDDEC145E3382D592266BE193E5BE53443138EE6AB6CA09FF20DF609E268"
+                },
+                "version": "1.2.0",
+                "connector": "augur-preemptive-detection",
+                "operation": "query_file",
+                "operationTitle": "Get File Reputation",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "140",
+              "left": "340",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "8b559bd7-9b03-4a9c-be18-b05407889dcc"
+            },
             {
               "@type": "WorkflowStep",
               "name": "Start",
@@ -56,59 +189,36 @@
               "top": "20",
               "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "uuid": "4c19514b-6435-4efb-ba2d-ccfd9f21753c",
-              "id": 63122
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get File Reputation",
-              "description": null,
-              "arguments": {
-                "name": "Augur Premptive Detection",
-                "config": "754e37ce-9028-4aeb-b2f6-4e3c0493e455",
-                "params": {
-                  "file_hash": "3CBCFDDEC145E3382D592266BE193E5BE53443138EE6AB6CA09FF20DF609E268"
-                },
-                "version": "1.2.0",
-                "connector": "augur-premptive-detection",
-                "operation": "query_file",
-                "operationTitle": "Get File Reputation",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
-              },
-              "status": null,
-              "top": "120",
-              "left": "188",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "d7b892e3-7747-46a8-afa9-4884182cb921",
-              "id": 63123
+              "group": null,
+              "uuid": "4c19514b-6435-4efb-ba2d-ccfd9f21753c"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Alerts -> Get File Reputation",
-              "targetStep": "/api/3/workflow_steps/d7b892e3-7747-46a8-afa9-4884182cb921",
+              "name": "Start -> Get File Reputation",
+              "targetStep": "/api/3/workflow_steps/8b559bd7-9b03-4a9c-be18-b05407889dcc",
               "sourceStep": "/api/3/workflow_steps/4c19514b-6435-4efb-ba2d-ccfd9f21753c",
               "label": null,
               "isExecuted": false,
-              "uuid": "143c11e2-2b3b-40d6-ae32-5c74cbdb57d0"
+              "group": null,
+              "uuid": "3c9de201-a4b9-4ccc-85a5-732e7548dfd9"
             }
           ],
+          "groups": [],
           "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "79071468-aea8-49d8-b3ad-d2a2eed481d5",
+          "id": 544,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "Augur",
             "augur-premptive-detection"
-          ],
-          "id": 19436,
-          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-          "createDate": 1651666885,
-          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
-          "modifyDate": 1651667093,
-          "owners": [],
-          "isPrivate": false
+          ]
         },
         {
           "@type": "Workflow",
@@ -123,11 +233,36 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1645616570,
+          "lastModifyDate": 1770274627,
           "collection": "/api/3/workflow_collections/e3316da9-5ca0-45e3-ba81-7594a1753236",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/e63a573f-393d-43ff-9831-1ac317a5c534",
           "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Domain Reputation",
+              "description": null,
+              "arguments": {
+                "name": "Augur Premptive Detection",
+                "config": "12161385-3737-4f74-9137-fc59e2d377dc",
+                "params": {
+                  "domain": "kubeitalia.it"
+                },
+                "version": "1.2.0",
+                "connector": "augur-preemptive-detection",
+                "operation": "query_domain",
+                "operationTitle": "Get Domain Reputation",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "fb5befd2-70ef-4ad8-9bf5-d1a0cbe042a9"
+            },
             {
               "@type": "WorkflowStep",
               "name": "Start",
@@ -151,33 +286,8 @@
               "top": "20",
               "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "uuid": "e63a573f-393d-43ff-9831-1ac317a5c534",
-              "id": 63124
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Domain Reputation",
-              "description": null,
-              "arguments": {
-                "name": "Augur Premptive Detection",
-                "config": "12161385-3737-4f74-9137-fc59e2d377dc",
-                "params": {
-                  "domain": "kubeitalia.it"
-                },
-                "version": "1.2.0",
-                "connector": "augur-preemptive-detection",
-                "operation": "query_domain",
-                "operationTitle": "Get Domain Reputation",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
-              },
-              "status": null,
-              "top": "120",
-              "left": "180",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "fb5befd2-70ef-4ad8-9bf5-d1a0cbe042a9",
-              "id": 63125
+              "group": null,
+              "uuid": "e63a573f-393d-43ff-9831-1ac317a5c534"
             }
           ],
           "routes": [
@@ -188,22 +298,24 @@
               "sourceStep": "/api/3/workflow_steps/e63a573f-393d-43ff-9831-1ac317a5c534",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "56619696-cb30-4530-8ea0-80af9ff26f16"
             }
           ],
+          "groups": [],
           "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "7ad4251b-4775-4302-a433-2b771064e2e8",
+          "id": 545,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "Augur",
             "augur-premptive-detection"
-          ],
-          "id": 19437,
-          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-          "createDate": 1651666885,
-          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-          "modifyDate": 1651666885,
-          "owners": [],
-          "isPrivate": false
+          ]
         },
         {
           "@type": "Workflow",
@@ -218,7 +330,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1651667168,
+          "lastModifyDate": 1770274322,
           "collection": "/api/3/workflow_collections/e3316da9-5ca0-45e3-ba81-7594a1753236",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/627c911e-6f5a-4453-8734-a51763f47e54",
@@ -228,25 +340,24 @@
               "name": "Get Host Reputation",
               "description": null,
               "arguments": {
-                "name": "Augur Premptive Detection",
-                "config": "754e37ce-9028-4aeb-b2f6-4e3c0493e455",
+                "name": "Augur Preemptive Detection",
+                "config": "47335693-dac5-46db-9a75-dbb39cf995a9",
                 "params": {
-                  "host": "google.com"
+                  "host": "www.kubeitalia.it"
                 },
                 "version": "1.2.0",
-                "connector": "augur-preventive-detection",
+                "connector": "augur-preemptive-detection",
                 "operation": "query_host",
                 "operationTitle": "Get Host Reputation",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
+                "pickFromTenant": false,
+                "step_variables": []
               },
               "status": null,
-              "top": "120",
-              "left": "188",
+              "top": "140",
+              "left": "320",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "0ad34e18-a339-4f94-b69a-ed8abb884519",
-              "id": 63127
+              "group": null,
+              "uuid": "13995bd3-faee-487a-a547-487b2bc36c94"
             },
             {
               "@type": "WorkflowStep",
@@ -271,34 +382,36 @@
               "top": "20",
               "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "uuid": "627c911e-6f5a-4453-8734-a51763f47e54",
-              "id": 63126
+              "group": null,
+              "uuid": "627c911e-6f5a-4453-8734-a51763f47e54"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Alerts -> Get Host Reputation",
-              "targetStep": "/api/3/workflow_steps/0ad34e18-a339-4f94-b69a-ed8abb884519",
+              "name": "Start -> Get Host Reputation",
+              "targetStep": "/api/3/workflow_steps/13995bd3-faee-487a-a547-487b2bc36c94",
               "sourceStep": "/api/3/workflow_steps/627c911e-6f5a-4453-8734-a51763f47e54",
               "label": null,
               "isExecuted": false,
-              "uuid": "e7fd3349-cb3d-4835-8ad9-8c51cac1060b"
+              "group": null,
+              "uuid": "42bbed2b-2c3c-4faf-8caf-1c853e373747"
             }
           ],
+          "groups": [],
           "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "d11b0b2c-4dee-4104-8c05-f62ee39811c2",
+          "id": 546,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "Augur",
             "augur-premptive-detection"
-          ],
-          "id": 19438,
-          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-          "createDate": 1651666885,
-          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
-          "modifyDate": 1651667168,
-          "owners": [],
-          "isPrivate": false
+          ]
         },
         {
           "@type": "Workflow",
@@ -313,7 +426,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1645616467,
+          "lastModifyDate": 1770274603,
           "collection": "/api/3/workflow_collections/e3316da9-5ca0-45e3-ba81-7594a1753236",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/6429f759-6709-4734-af56-be7c3fc3834f",
@@ -340,8 +453,8 @@
               "top": "120",
               "left": "180",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "uuid": "4cfbb5ef-7c7b-4d19-8dfe-0c9bf2d1b5a7",
-              "id": 63129
+              "group": null,
+              "uuid": "4cfbb5ef-7c7b-4d19-8dfe-0c9bf2d1b5a7"
             },
             {
               "@type": "WorkflowStep",
@@ -366,8 +479,8 @@
               "top": "20",
               "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "uuid": "6429f759-6709-4734-af56-be7c3fc3834f",
-              "id": 63128
+              "group": null,
+              "uuid": "6429f759-6709-4734-af56-be7c3fc3834f"
             }
           ],
           "routes": [
@@ -378,28 +491,31 @@
               "sourceStep": "/api/3/workflow_steps/6429f759-6709-4734-af56-be7c3fc3834f",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "45af1153-e7f2-49c0-8a77-9faae759cd1b"
             }
           ],
+          "groups": [],
           "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "d755f86e-5b72-4919-9e30-ce10390c21a1",
+          "id": 547,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
           "recordTags": [
             "Augur",
             "augur-premptive-detection"
-          ],
-          "id": 19439,
-          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-          "createDate": 1651666885,
-          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-          "modifyDate": 1651666885,
-          "owners": [],
-          "isPrivate": false
+          ]
         }
       ]
     }
   ],
   "exported_tags": [
     "Augur",
-    "augur-preempive-detection"
+    "augur-preempive-detection",
+    "augur-premptive-detection"
   ]
 }

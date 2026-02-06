@@ -24,7 +24,7 @@
           "triggerLimit": null,
           "name": "Get IP Reputation",
           "aliasName": null,
-          "tag": null,
+          "tag": "#Augur Premptive Detection",
           "description": "Retrieves threat data from Augur API for the IP that you have submitted to determine if it is suspicious.",
           "isActive": false,
           "debug": false,

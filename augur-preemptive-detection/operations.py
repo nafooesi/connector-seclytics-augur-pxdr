@@ -1,6 +1,6 @@
 """Operations module defines the actions of Augur Connector.
 
-Copyright (C) 2014 - 2025 Augur Security Inc. All rights reserved.
+Copyright (C) 2014 - 2026 Augur Security Inc. All rights reserved.
 """
 import validators
 from connectors.core.connector import get_logger, ConnectorError  # pylint: disable=E0401

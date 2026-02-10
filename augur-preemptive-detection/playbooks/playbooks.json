@@ -7,11 +7,11 @@
       "name": "Sample - Augur Preemptive Detection - 1.2.0",
       "description": "Sample playbooks for \"Augur Preemptive Detection\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
-      "image": "/api/3/images/4162b0cf-c0ba-4335-b2dc-0bb9c479bb7d",
+      "image": "/api/3/images/5d48de2f-b2b1-486b-9334-23577ec3eb88",
       "uuid": "e3316da9-5ca0-45e3-ba81-7594a1753236",
-      "id": 64,
-      "createDate": 1770200256.824543,
-      "modifyDate": 1770275411.234047,
+      "id": 110,
+      "createDate": 1770636341.496136,
+      "modifyDate": 1770636341.496136,
       "deletedAt": null,
       "importedBy": [],
       "recordTags": [
@@ -114,7 +114,7 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "23bf4fd3-8297-4509-bae1-f50869dad739",
-          "id": 551,
+          "id": 627,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -210,7 +210,7 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "79071468-aea8-49d8-b3ad-d2a2eed481d5",
-          "id": 544,
+          "id": 628,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -307,7 +307,7 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "7ad4251b-4775-4302-a433-2b771064e2e8",
-          "id": 545,
+          "id": 629,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -315,6 +315,988 @@
           "recordTags": [
             "Augur",
             "augur-premptive-detection"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Augur Security Incident Scan",
+          "aliasName": null,
+          "tag": "#Augur Premptive Detection",
+          "description": "This playbook scans incidents for IOCs (IPs, hosts, and file hashes) and enriches them with threat details in notes.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1770703706,
+          "collection": "/api/3/workflow_collections/e3316da9-5ca0-45e3-ba81-7594a1753236",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/76de5963-3b40-4370-ace2-2eb6990eca89",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Abort DestIP Is Private",
+              "description": null,
+              "arguments": {
+                "params": [],
+                "message": {
+                  "tags": [],
+                  "type": "/api/3/picklists/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                  "tenant": "",
+                  "thread": false,
+                  "content": "<p>Destination IP is <span style=\"color: rgb(45, 194, 107);\">private</span>.<br>Terminating Destination IP Reputation sequence.</p>",
+                  "records": "",
+                  "parentstepid": "/api/3/workflow_steps/b6057717-773e-4cb2-b98b-32828587370d"
+                },
+                "version": "3.7.0",
+                "connector": "cyops_utilities",
+                "operation": "no_op",
+                "operationTitle": "Utils: No Operation",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "320",
+              "left": "1140",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "7403e603-f211-4b3c-97cc-1444c0615c27"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Abort No FileHash",
+              "description": null,
+              "arguments": {
+                "params": [],
+                "version": "3.7.0",
+                "connector": "cyops_utilities",
+                "operation": "no_op",
+                "operationTitle": "Utils: No Operation",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "700",
+              "left": "520",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "5479a5f9-3ac2-49b0-96ee-9d2b51bec5b3"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Abort No Host",
+              "description": null,
+              "arguments": {
+                "params": [],
+                "version": "3.7.0",
+                "connector": "cyops_utilities",
+                "operation": "no_op",
+                "operationTitle": "Utils: No Operation",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "940",
+              "left": "520",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "5690e4b3-5892-422b-a8d1-363ba3beb331"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Abort No Or Invalid DestIP",
+              "description": null,
+              "arguments": {
+                "params": [],
+                "version": "3.7.0",
+                "connector": "cyops_utilities",
+                "operation": "no_op",
+                "operationTitle": "Utils: No Operation",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "320",
+              "left": "520",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "8e50e13e-f886-4a92-a6fc-001fc631b8f0"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Abort No Or Invalid SrcIP",
+              "description": null,
+              "arguments": {
+                "params": [],
+                "version": "3.7.0",
+                "connector": "cyops_utilities",
+                "operation": "no_op",
+                "operationTitle": "Utils: No Operation",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "80",
+              "left": "520",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "691a8ffe-c51c-46b0-87ec-9acd8c8921c6"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Abort No Threat",
+              "description": null,
+              "arguments": {
+                "params": [],
+                "version": "3.7.0",
+                "connector": "cyops_utilities",
+                "operation": "no_op",
+                "operationTitle": "Utils: No Operation",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "380",
+              "left": "2260",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "6e97debf-16c5-4e6d-bc39-810f581e4f8e"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Abort SrcIP Is Private",
+              "description": null,
+              "arguments": {
+                "params": [],
+                "message": {
+                  "tags": [],
+                  "type": "/api/3/picklists/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                  "tenant": "",
+                  "thread": false,
+                  "content": "<p>Source IP is <span style=\"color: rgb(45, 194, 107);\">private</span>.<br>Terminating Source IP Reputation sequence.</p>",
+                  "records": "",
+                  "parentstepid": "/api/3/workflow_steps/558cde4d-8215-45a5-a821-4143f2a9f492"
+                },
+                "version": "3.7.0",
+                "connector": "cyops_utilities",
+                "operation": "no_op",
+                "operationTitle": "Utils: No Operation",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "80",
+              "left": "1140",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "a599f3ca-3845-431a-bf98-0aefc03fd9f5"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Analyze Threat Details",
+              "description": null,
+              "arguments": {
+                "message": {
+                  "tags": [],
+                  "type": "/api/3/picklists/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                  "tenant": "",
+                  "thread": false,
+                  "content": "<p style=\"text-align: left;\">&nbsp;</p>\n<p style=\"text-align: left;\"><span style=\"text-decoration: underline; font-size: 12pt;\"><strong><span style=\"color: rgb(53, 152, 219); text-decoration: underline;\">Augur Security Incident Scan Report<br><br></span></strong></span></p>\n<p>{% if vars.source_ip is not none and vars.source_ip == vars.source_ip | ipv4 and vars.source_ip_res == '' and fsr_steps_result.Identify_SrcIP_Type.data['ip_matched'] == false and vars.source_ip_whitelist != '' %}</p>\n<p style=\"text-align: left;\"><strong><span style=\"font-size: 10pt;\">Source IP Reputation : <span style=\"color: rgb(45, 194, 107);\">Whitelisted</span><br></span></strong></p>\n<p style=\"text-align: left;\">------------------------------------------------------------</p>\n<p>{% endif %} {% if vars.source_ip_whitelist == '' and vars.source_ip_context != '' %}</p>\n<p style=\"text-align: left;\"><span style=\"font-size: 10pt;\"><strong>Source IP Reputation</strong></span></p>\n<p>Context Details<br>Categories:</p>\n<p style=\"margin-left: 15px;\">{% for source, cats in vars.source_ip_context_categories.items() %} <strong>{{ source }}</strong>: {{ cats | join(', ') }}<br>{% endfor %}</p>\n<p>Prediction Details:<br>{{ fsr_steps_result.Get_SrcIP_Reputation.data.get(\"prediction\", {}).get(\"category\", \"Not Found\") }}</p>\n<p>------------------------------------------------------------</p>\n<p>{% endif %} {% if vars.source_ip_res == '' and vars.source_ip_context == '' %}</p>\n<p style=\"text-align: left;\"><span style=\"font-size: 10pt;\"><strong>Source IP Reputation</strong></span></p>\n<p>Context Details : Not Found<br>Prediction Details: Not Found</p>\n<p>------------------------------------------------------------</p>\n<p>{% endif %} {% if vars.destination_ip is not none and vars.destination_ip == vars.destination_ip | ipv4 and vars.destination_ip_res == '' and fsr_steps_result.Identify_DestIP_Type.data['ip_matched'] == false and vars.destination_ip_whitelist != '' %}</p>\n<p><span style=\"font-size: 10pt;\"><strong>Destination IP Reputation : <span style=\"color: rgb(45, 194, 107);\">Whitelisted</span></strong></span></p>\n<p>------------------------------------------------------------</p>\n<p>{% endif %} {% if vars.destination_ip_whitelist == '' and vars.destination_ip_context != '' %}</p>\n<p><strong><span style=\"font-size: 10pt;\">Destination IP Reputation</span></strong></p>\n<p>Context Details<br>Categories:</p>\n<p style=\"margin-left: 15px;\">{% for source, cats in vars.destination_ip_context_categories.items() %} <strong>{{ source }}</strong>: {{ cats | join(', ') }}<br>{% endfor %}</p>\n<p>Prediction Details:<br>{{ fsr_steps_result.Get_DestIP_Reputation.data.get(\"prediction\", {}).get(\"category\", \"Not Found\") }}</p>\n<p>------------------------------------------------------------</p>\n<p>{% endif %} {% if vars.destination_ip_res == '' and vars.destination_ip_context == '' %}</p>\n<p style=\"text-align: left;\"><span style=\"font-size: 10pt;\"><strong>Destination IP Reputation</strong></span></p>\n<p>Context Details : Not Found<br>Prediction Details: Not Found</p>\n<p>------------------------------------------------------------</p>\n<p>{% endif %} {% if vars.file_hash is not none and vars.file_hash_context == '' %}</p>\n<p><span style=\"font-size: 10pt;\"><strong>File Reputation</strong></span></p>\n<p>Context Details:<br>Not Found</p>\n<p>------------------------------------------------------------</p>\n<p>{% endif %} {% if vars.file_hash is not none and vars.file_hash_context != '' and vars.file_hash_context_categories != '' %}</p>\n<p><span style=\"font-size: 10pt;\"><strong>File Reputation</strong></span></p>\n<p>Context Details:<br>Categories</p>\n<p style=\"margin-left: 15px;\">{% if vars.file_hash_context_categories is mapping %} {% for source, cats in vars.file_hash_context_categories.items() %} <strong>{{ source }}</strong>: {{ cats | join(', ') }}<br>{% endfor %} {% else %} {{ vars.file_hash_context_categories or \"Not Found\" }} {% endif %}</p>\n<p>Actors<br>{{ vars.file_hash_context_actors or \"Not Found\" }}</p>\n<p>------------------------------------------------------------</p>\n<p>{% endif %} {% if vars.host is not none and vars.host_whitelist != '' %}</p>\n<p><strong><span style=\"font-size: 10pt;\">Host Reputation : <span style=\"color: rgb(45, 194, 107);\">Whitelisted</span></span></strong></p>\n<p>------------------------------------------------------------</p>\n<p>{% endif %} {% if vars.host is not none and vars.host_whitelist == '' and vars.host_context != '' %}</p>\n<p><span style=\"font-size: 10pt;\"><strong>Host Reputation</strong></span></p>\n<p>Context Details<br>Categories:</p>\n<p style=\"margin-left: 15px;\">{% if vars.host_context_categories is mapping %} {% for source, cats in vars.host_context_categories.items() %} <strong>{{ source }}</strong>: {{ cats | join(', ') }}<br>{% endfor %} {% else %} {{ vars.host_context_categories or \"Not Found\" }} {% endif %}</p>\n<p>------------------------------------------------------------</p>\n<p>{% endif %} {% if vars.host is not none and vars.host_whitelist == '' and vars.host_context == '' %}</p>\n<p><span style=\"font-size: 10pt;\"><strong>Host Reputation</strong></span></p>\n<p>Context Details<br>Not Found</p>\n<p>------------------------------------------------------------</p>\n<p>{% endif %}</p>",
+                  "records": "",
+                  "parentstepid": "/api/3/workflow_steps/52a51a07-b39f-4b6b-99ff-4fc1bee5d675"
+                },
+                "conditions": [
+                  {
+                    "step_iri": "/api/3/workflow_steps/cfb6fa30-4eac-489b-95e0-e5c57699945d",
+                    "condition": "{{ vars.source_ip_res != '' or vars.destination_ip_res != '' or vars.file_hash_context_categories != '' }}",
+                    "step_name": "Enrich Incident"
+                  },
+                  {
+                    "default": true,
+                    "step_iri": "/api/3/workflow_steps/6e97debf-16c5-4e6d-bc39-810f581e4f8e",
+                    "step_name": "Abort No Threat"
+                  }
+                ],
+                "step_variables": []
+              },
+              "status": null,
+              "top": "500",
+              "left": "2260",
+              "stepType": "/api/3/workflow_step_types/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+              "group": null,
+              "uuid": "fb648e84-4931-44f3-8024-366d1693260d"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Augur Security Scan",
+              "description": null,
+              "arguments": {
+                "message": {
+                  "tags": [],
+                  "type": "/api/3/picklists/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                  "tenant": "",
+                  "thread": false,
+                  "content": "<p><strong><span style=\"font-size: 12pt; color: rgb(53, 152, 219);\">Initiating Augur Security Scan...</span></strong></p>",
+                  "records": ""
+                },
+                "resource": "incidents",
+                "resources": [
+                  "incidents"
+                ],
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": [
+                      "{{vars.input.records[0]}}"
+                    ]
+                  }
+                },
+                "triggerOnSource": true,
+                "fieldbasedtrigger": {
+                  "sort": [],
+                  "limit": 30,
+                  "logic": "AND",
+                  "filters": []
+                },
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "80",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/9300bf69-5063-486d-b3a6-47eb9da24872",
+              "group": null,
+              "uuid": "76de5963-3b40-4370-ace2-2eb6990eca89"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Enrich Incident",
+              "description": null,
+              "arguments": {
+                "resource": {
+                  "severity": "/api/3/picklists/7efa2220-39bb-44e4-961f-ac368776e3b0",
+                  "escalated": "/api/3/picklists/cfd49634-d25a-476f-8485-99585e589a8c"
+                },
+                "operation": "Append",
+                "collection": "{{vars.input.records[0]['@id']}}",
+                "__recommend": [],
+                "collectionType": "/api/3/incidents",
+                "fieldOperation": [],
+                "step_variables": []
+              },
+              "status": null,
+              "top": "500",
+              "left": "2580",
+              "stepType": "/api/3/workflow_step_types/b593663d-7d13-40ce-a3a3-96dece928722",
+              "group": null,
+              "uuid": "cfb6fa30-4eac-489b-95e0-e5c57699945d"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get DestIP Reputation",
+              "description": null,
+              "arguments": {
+                "name": "Augur Preemptive Detection",
+                "config": "2701e00b-a34f-403d-9837-e49a949a0ded",
+                "params": {
+                  "ip": "{{vars.destination_ip}}"
+                },
+                "version": "1.2.0",
+                "connector": "augur-preemptive-detection",
+                "operation": "query_ip",
+                "operationTitle": "Get IP Reputation",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "440",
+              "left": "1460",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "900997d0-d448-4689-bdf9-a64b45725325"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get File Reputation",
+              "description": null,
+              "arguments": {
+                "name": "Augur Preemptive Detection",
+                "config": "2701e00b-a34f-403d-9837-e49a949a0ded",
+                "params": {
+                  "file_hash": "{{vars.file_hash}}"
+                },
+                "version": "1.2.0",
+                "connector": "augur-preemptive-detection",
+                "operation": "query_file",
+                "operationTitle": "Get File Reputation",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "580",
+              "left": "1140",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "989737c7-5bf1-4f6f-9932-c35be1172d03"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Host Reputation",
+              "description": null,
+              "arguments": {
+                "name": "Augur Preemptive Detection",
+                "config": "2701e00b-a34f-403d-9837-e49a949a0ded",
+                "params": {
+                  "host": "{{vars.host}}"
+                },
+                "version": "1.2.0",
+                "connector": "augur-preemptive-detection",
+                "operation": "query_host",
+                "operationTitle": "Get Host Reputation",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "820",
+              "left": "1140",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "f9773ea4-cfc2-49e9-804f-18654a218fe1"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get SrcIP Reputation",
+              "description": null,
+              "arguments": {
+                "name": "Augur Preemptive Detection",
+                "config": "2701e00b-a34f-403d-9837-e49a949a0ded",
+                "params": {
+                  "ip": "{{vars.source_ip}}"
+                },
+                "version": "1.2.0",
+                "connector": "augur-preemptive-detection",
+                "operation": "query_ip",
+                "operationTitle": "Get IP Reputation",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "200",
+              "left": "1460",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "8f998233-db0e-4a2b-a14a-a407aaafebf6"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Identify DestIP Type",
+              "description": null,
+              "arguments": {
+                "params": {
+                  "cidr": "{{vars.private_cidrs}}",
+                  "ip_address": "{{vars.destination_ip}}"
+                },
+                "version": "3.7.0",
+                "connector": "cyops_utilities",
+                "operation": "ip_cidr_check",
+                "operationTitle": "Utils: Is IP in CIDR",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "440",
+              "left": "820",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "3bbd0954-f58b-415a-b89d-5a0ad3153cda"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Identify SrcIP Type",
+              "description": null,
+              "arguments": {
+                "params": {
+                  "cidr": "{{vars.private_cidrs}}",
+                  "ip_address": "{{vars.source_ip}}"
+                },
+                "version": "3.7.0",
+                "connector": "cyops_utilities",
+                "operation": "ip_cidr_check",
+                "operationTitle": "Utils: Is IP in CIDR",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "200",
+              "left": "820",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "fa61bcc6-4781-4d50-b558-e16e4b7e50da"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Is Destination IP Public",
+              "description": null,
+              "arguments": {
+                "conditions": [
+                  {
+                    "step_iri": "/api/3/workflow_steps/7403e603-f211-4b3c-97cc-1444c0615c27",
+                    "condition": "{{ vars.steps.Identify_DestIP_Type.data['ip_matched'] == true }}",
+                    "step_name": "Abort DestIP Is Private"
+                  },
+                  {
+                    "step_iri": "/api/3/workflow_steps/900997d0-d448-4689-bdf9-a64b45725325",
+                    "condition": "{{ vars.steps.Identify_DestIP_Type.data['ip_matched'] == false }}",
+                    "step_name": "Get DestIP Reputation"
+                  }
+                ],
+                "step_variables": []
+              },
+              "status": null,
+              "top": "440",
+              "left": "1140",
+              "stepType": "/api/3/workflow_step_types/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+              "group": null,
+              "uuid": "0f789672-b9f8-423b-89e8-136eea930321"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Is Destination IP Valid",
+              "description": null,
+              "arguments": {
+                "message": {
+                  "tags": [],
+                  "type": "/api/3/picklists/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                  "tenant": "",
+                  "thread": false,
+                  "content": "<p>{% if vars.destination_ip is not none and vars.destination_ip != vars.destination_ip | ipv4 %}<br>Destination IP is&nbsp;<span style=\"color: rgb(224, 62, 45);\">Invalid</span>.<br>Terminating Destination IP Reputation sequence.<br>{% endif %}</p>",
+                  "records": "",
+                  "parentstepid": "/api/3/workflow_steps/52a51a07-b39f-4b6b-99ff-4fc1bee5d675"
+                },
+                "conditions": [
+                  {
+                    "step_iri": "/api/3/workflow_steps/8e50e13e-f886-4a92-a6fc-001fc631b8f0",
+                    "condition": "{{ vars.destination_ip is none or vars.destination_ip != vars.destination_ip | ipv4 }}",
+                    "step_name": "Abort No Or Invalid DestIP"
+                  },
+                  {
+                    "step_iri": "/api/3/workflow_steps/3bbd0954-f58b-415a-b89d-5a0ad3153cda",
+                    "condition": "{{ vars.destination_ip == vars.destination_ip | ipv4 }}",
+                    "step_name": "Identify DestIP Type"
+                  }
+                ],
+                "step_variables": []
+              },
+              "status": null,
+              "top": "440",
+              "left": "520",
+              "stepType": "/api/3/workflow_step_types/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+              "group": null,
+              "uuid": "b6057717-773e-4cb2-b98b-32828587370d"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Is FileHash Valid",
+              "description": null,
+              "arguments": {
+                "conditions": [
+                  {
+                    "step_iri": "/api/3/workflow_steps/5479a5f9-3ac2-49b0-96ee-9d2b51bec5b3",
+                    "condition": "{{ vars.file_hash is none }}",
+                    "step_name": "Abort No FileHash"
+                  },
+                  {
+                    "step_iri": "/api/3/workflow_steps/989737c7-5bf1-4f6f-9932-c35be1172d03",
+                    "condition": "{{ vars.file_hash is not none }}",
+                    "step_name": "Get File Reputation"
+                  }
+                ],
+                "step_variables": []
+              },
+              "status": null,
+              "top": "580",
+              "left": "520",
+              "stepType": "/api/3/workflow_step_types/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+              "group": null,
+              "uuid": "35954bd6-f260-4f63-965a-193b0031b756"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Is Host Valid",
+              "description": null,
+              "arguments": {
+                "conditions": [
+                  {
+                    "step_iri": "/api/3/workflow_steps/5690e4b3-5892-422b-a8d1-363ba3beb331",
+                    "condition": "{{ vars.host is none }}",
+                    "step_name": "Abort No Host"
+                  },
+                  {
+                    "step_iri": "/api/3/workflow_steps/f9773ea4-cfc2-49e9-804f-18654a218fe1",
+                    "condition": "{{ vars.host is not none }}",
+                    "step_name": "Get Host Reputation"
+                  }
+                ],
+                "step_variables": []
+              },
+              "status": null,
+              "top": "820",
+              "left": "520",
+              "stepType": "/api/3/workflow_step_types/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+              "group": null,
+              "uuid": "22da152c-ef58-4c5d-b7c1-94145731415b"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Is Source IP Public",
+              "description": null,
+              "arguments": {
+                "conditions": [
+                  {
+                    "step_iri": "/api/3/workflow_steps/a599f3ca-3845-431a-bf98-0aefc03fd9f5",
+                    "condition": "{{ vars.steps.Identify_SrcIP_Type.data['ip_matched'] == true }}",
+                    "step_name": "Abort SrcIP Is Private"
+                  },
+                  {
+                    "step_iri": "/api/3/workflow_steps/8f998233-db0e-4a2b-a14a-a407aaafebf6",
+                    "condition": "{{ vars.steps.Identify_SrcIP_Type.data['ip_matched'] == false }}",
+                    "step_name": "Get SrcIP Reputation"
+                  }
+                ],
+                "step_variables": []
+              },
+              "status": null,
+              "top": "200",
+              "left": "1140",
+              "stepType": "/api/3/workflow_step_types/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+              "group": null,
+              "uuid": "e449f213-3f34-4dd8-8753-7861cb919b62"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Is Source IP Valid",
+              "description": null,
+              "arguments": {
+                "message": {
+                  "tags": [],
+                  "type": "/api/3/picklists/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                  "tenant": "",
+                  "thread": false,
+                  "content": "<p>{% if vars.source_ip is not none and vars.source_ip != vars.source_ip | ipv4 %}<br>Source IP is <span style=\"color: rgb(224, 62, 45);\">Invalid</span>.<br>Terminating Source IP Reputation sequence.<br>{% endif %}</p>",
+                  "records": "",
+                  "parentstepid": "/api/3/workflow_steps/52a51a07-b39f-4b6b-99ff-4fc1bee5d675"
+                },
+                "conditions": [
+                  {
+                    "step_iri": "/api/3/workflow_steps/691a8ffe-c51c-46b0-87ec-9acd8c8921c6",
+                    "condition": "{{ vars.source_ip is none or vars.source_ip != vars.source_ip | ipv4 }}",
+                    "step_name": "Abort No Or Invalid SrcIP"
+                  },
+                  {
+                    "step_iri": "/api/3/workflow_steps/fa61bcc6-4781-4d50-b558-e16e4b7e50da",
+                    "condition": "{{ vars.source_ip == vars.source_ip | ipv4 }}",
+                    "step_name": "Identify SrcIP Type"
+                  }
+                ],
+                "step_variables": []
+              },
+              "status": null,
+              "top": "200",
+              "left": "520",
+              "stepType": "/api/3/workflow_step_types/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+              "group": null,
+              "uuid": "558cde4d-8215-45a5-a821-4143f2a9f492"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Set DestIP Response",
+              "description": null,
+              "arguments": {
+                "destination_ip_res": "{{vars.steps.Get_DestIP_Reputation.data.prediction}}",
+                "destination_ip_context": "{{vars.steps.Get_DestIP_Reputation.data.context}}",
+                "destination_ip_whitelist": "{{vars.steps.Get_DestIP_Reputation.data.whitelist}}",
+                "destination_ip_context_categories": "{{vars.steps.Get_DestIP_Reputation.data.context.categories}}"
+              },
+              "status": null,
+              "top": "440",
+              "left": "1780",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "10d74975-92b9-490c-acd4-f7671789c2ee"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Set File Response",
+              "description": null,
+              "arguments": {
+                "file_hash_context": "{{vars.steps.Get_File_Reputation.data.context}}",
+                "file_hash_context_actors": "{{vars.steps.Get_File_Reputation.data.context.actors}}",
+                "file_hash_context_categories": "{{vars.steps.Get_File_Reputation.data.context.categories}}"
+              },
+              "status": null,
+              "top": "580",
+              "left": "1780",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "75c2d4cd-06e0-413f-8f59-808920cefd19"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Set Host Response",
+              "description": null,
+              "arguments": {
+                "host_res": "{{vars.steps.Get_Host_Reputation.data.prediction}}",
+                "host_context": "{{vars.steps.Get_Host_Reputation.data.context}}",
+                "host_whitelist": "{{vars.steps.Get_Host_Reputation.data.whitelist}}",
+                "host_context_categories": "{{vars.steps.Get_Host_Reputation.data.context.categories}}"
+              },
+              "status": null,
+              "top": "820",
+              "left": "1780",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "5646c3d8-cbd1-47d5-aa03-5cf258fdedc7"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Set SrcIP Response",
+              "description": null,
+              "arguments": {
+                "source_ip_res": "{{vars.steps.Get_SrcIP_Reputation.data.prediction}}",
+                "source_ip_context": "{{vars.steps.Get_SrcIP_Reputation.data.context}}",
+                "source_ip_whitelist": "{{vars.steps.Get_SrcIP_Reputation.data.whitelist}}",
+                "source_ip_context_categories": "{{vars.steps.Get_SrcIP_Reputation.data.context.categories}}"
+              },
+              "status": null,
+              "top": "200",
+              "left": "1780",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "069a39ae-c6fa-478d-9e34-e5afb49a2a6d"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Set Variables",
+              "description": "This sets the few configuration variables.",
+              "arguments": {
+                "host": "{{vars.input.records[0].senderDomain}}",
+                "file_hash": "{{vars.input.records[0].filehash }}",
+                "source_ip": "{{vars.input.records[0].sourceIP }}",
+                "private_cidrs": "[\"10.0.0.0/8\", \"172.16.0.0/12\", \"192.168.0.0/16\",\"127.0.0.0/8\",\"169.254.0.0/16\",\"100.64.0.0/10\"]",
+                "source_ip_res": "",
+                "destination_ip": "{{vars.input.records[0].destinationIP}}",
+                "destination_ip_res": "",
+                "file_hash_context_categories": ""
+              },
+              "status": null,
+              "top": "500",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "716a1c74-6e23-432f-a474-01cacde1d73f"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Automatic Augur CIDR Match -> Set Src Dest Ips",
+              "targetStep": "/api/3/workflow_steps/716a1c74-6e23-432f-a474-01cacde1d73f",
+              "sourceStep": "/api/3/workflow_steps/76de5963-3b40-4370-ace2-2eb6990eca89",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "12d1afeb-dcc0-4f5c-865e-60c58bdee392"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Check DestinationIP Is Valid -> No Operation If No DestIP",
+              "targetStep": "/api/3/workflow_steps/8e50e13e-f886-4a92-a6fc-001fc631b8f0",
+              "sourceStep": "/api/3/workflow_steps/b6057717-773e-4cb2-b98b-32828587370d",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "b71b9bb1-156d-467a-97c7-03fcdeeb6772"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Check Domain Exist -> Check Domain",
+              "targetStep": "/api/3/workflow_steps/f9773ea4-cfc2-49e9-804f-18654a218fe1",
+              "sourceStep": "/api/3/workflow_steps/22da152c-ef58-4c5d-b7c1-94145731415b",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "c79c281a-d70d-4193-a347-bb6791bb07bb"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Check Domain Exist -> No Operation If No Domain",
+              "targetStep": "/api/3/workflow_steps/5690e4b3-5892-422b-a8d1-363ba3beb331",
+              "sourceStep": "/api/3/workflow_steps/22da152c-ef58-4c5d-b7c1-94145731415b",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "fd8aead5-9816-4bc6-b64b-d7eb504bd77c"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Check FileHash Exist -> Check FileHash",
+              "targetStep": "/api/3/workflow_steps/989737c7-5bf1-4f6f-9932-c35be1172d03",
+              "sourceStep": "/api/3/workflow_steps/35954bd6-f260-4f63-965a-193b0031b756",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "351355fb-7037-48d6-896f-a0af91bc176f"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Check FileHash Exist -> No Operation If No FileHash",
+              "targetStep": "/api/3/workflow_steps/5479a5f9-3ac2-49b0-96ee-9d2b51bec5b3",
+              "sourceStep": "/api/3/workflow_steps/35954bd6-f260-4f63-965a-193b0031b756",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "f5066744-6c0c-4e9b-b72f-5133e3d17a45"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Check IP Is Public -> Filter If IP is Private",
+              "targetStep": "/api/3/workflow_steps/e449f213-3f34-4dd8-8753-7861cb919b62",
+              "sourceStep": "/api/3/workflow_steps/fa61bcc6-4781-4d50-b558-e16e4b7e50da",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "c1fe5633-4427-4e8c-a758-27fddcd2ddff"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Check IPs Exist -> No Operation",
+              "targetStep": "/api/3/workflow_steps/691a8ffe-c51c-46b0-87ec-9acd8c8921c6",
+              "sourceStep": "/api/3/workflow_steps/558cde4d-8215-45a5-a821-4143f2a9f492",
+              "label": "",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "8baeabbc-68e0-4088-ba5b-1a8953a0912a"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Check SourceIP -> Check SourceIP Res",
+              "targetStep": "/api/3/workflow_steps/069a39ae-c6fa-478d-9e34-e5afb49a2a6d",
+              "sourceStep": "/api/3/workflow_steps/8f998233-db0e-4a2b-a14a-a407aaafebf6",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "6dd270c6-521a-46bd-b779-585b8016e95d"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Check SourceIP Is Valid -> Check IP Is Public",
+              "targetStep": "/api/3/workflow_steps/fa61bcc6-4781-4d50-b558-e16e4b7e50da",
+              "sourceStep": "/api/3/workflow_steps/558cde4d-8215-45a5-a821-4143f2a9f492",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "ffefce02-beee-4744-a295-f5a7416cea82"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Filter If IP is Private -> Check SourceIP",
+              "targetStep": "/api/3/workflow_steps/8f998233-db0e-4a2b-a14a-a407aaafebf6",
+              "sourceStep": "/api/3/workflow_steps/e449f213-3f34-4dd8-8753-7861cb919b62",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "5629c141-93e8-4208-9840-a18a70493fda"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Filter If IP is Private -> Terminate If IP Is Private",
+              "targetStep": "/api/3/workflow_steps/a599f3ca-3845-431a-bf98-0aefc03fd9f5",
+              "sourceStep": "/api/3/workflow_steps/e449f213-3f34-4dd8-8753-7861cb919b62",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "1e20de5f-f059-478d-8778-8d09e571f570"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Get DestIP Reputation -> Set DestIP Response",
+              "targetStep": "/api/3/workflow_steps/10d74975-92b9-490c-acd4-f7671789c2ee",
+              "sourceStep": "/api/3/workflow_steps/900997d0-d448-4689-bdf9-a64b45725325",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "3d4e3d46-eb4e-4a4b-b7b3-5fc215145f60"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Get Domain Reputation -> Set Domain Response",
+              "targetStep": "/api/3/workflow_steps/5646c3d8-cbd1-47d5-aa03-5cf258fdedc7",
+              "sourceStep": "/api/3/workflow_steps/f9773ea4-cfc2-49e9-804f-18654a218fe1",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "fd7ee01f-b224-4826-aa99-dee49e0599ad"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Get File Reputation -> Set File Response",
+              "targetStep": "/api/3/workflow_steps/75c2d4cd-06e0-413f-8f59-808920cefd19",
+              "sourceStep": "/api/3/workflow_steps/989737c7-5bf1-4f6f-9932-c35be1172d03",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "77fc8858-e7df-42e3-8303-23c9ae11bb7c"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Identify DestIP Type -> Verify DestIP Type",
+              "targetStep": "/api/3/workflow_steps/0f789672-b9f8-423b-89e8-136eea930321",
+              "sourceStep": "/api/3/workflow_steps/3bbd0954-f58b-415a-b89d-5a0ad3153cda",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "f5688e40-0795-4e40-8faa-5bf737d5151b"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Set DestIP Response -> Verify Threat Details",
+              "targetStep": "/api/3/workflow_steps/fb648e84-4931-44f3-8024-366d1693260d",
+              "sourceStep": "/api/3/workflow_steps/10d74975-92b9-490c-acd4-f7671789c2ee",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "7f173864-fdb0-4ad2-a9b7-5c81736991f9"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Set Domain Response -> Verify Threat Details",
+              "targetStep": "/api/3/workflow_steps/fb648e84-4931-44f3-8024-366d1693260d",
+              "sourceStep": "/api/3/workflow_steps/5646c3d8-cbd1-47d5-aa03-5cf258fdedc7",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "111c0d7f-e27c-4216-84c2-fef77a398224"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Set File Response -> Verify Threat Details",
+              "targetStep": "/api/3/workflow_steps/fb648e84-4931-44f3-8024-366d1693260d",
+              "sourceStep": "/api/3/workflow_steps/75c2d4cd-06e0-413f-8f59-808920cefd19",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "1598b419-70a5-4c8d-ace8-37bf89a0b466"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Set Src Dest Ips -> Check IPs Exist",
+              "targetStep": "/api/3/workflow_steps/558cde4d-8215-45a5-a821-4143f2a9f492",
+              "sourceStep": "/api/3/workflow_steps/716a1c74-6e23-432f-a474-01cacde1d73f",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "5096cfcf-ff53-4069-8a77-1adf3ce47d17"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Set SrcIP Response -> Verify Threat Details",
+              "targetStep": "/api/3/workflow_steps/fb648e84-4931-44f3-8024-366d1693260d",
+              "sourceStep": "/api/3/workflow_steps/069a39ae-c6fa-478d-9e34-e5afb49a2a6d",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "cdfc52a1-fa23-4a87-bd7c-a366fff9bdde"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Set Variables -> Check DestinationIP Is Valid",
+              "targetStep": "/api/3/workflow_steps/b6057717-773e-4cb2-b98b-32828587370d",
+              "sourceStep": "/api/3/workflow_steps/716a1c74-6e23-432f-a474-01cacde1d73f",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "af8d2860-9799-4275-a47f-1a075e080462"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Set Variables -> Check Domain Exist",
+              "targetStep": "/api/3/workflow_steps/22da152c-ef58-4c5d-b7c1-94145731415b",
+              "sourceStep": "/api/3/workflow_steps/716a1c74-6e23-432f-a474-01cacde1d73f",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "24548b84-9ac0-49b3-83e6-7fb597b4c4ad"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Set Variables -> Check FileHash Exist",
+              "targetStep": "/api/3/workflow_steps/35954bd6-f260-4f63-965a-193b0031b756",
+              "sourceStep": "/api/3/workflow_steps/716a1c74-6e23-432f-a474-01cacde1d73f",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "918ce6b2-3602-4608-bde8-2c3636193512"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Verify Destination IP -> Identify DestIP Type",
+              "targetStep": "/api/3/workflow_steps/3bbd0954-f58b-415a-b89d-5a0ad3153cda",
+              "sourceStep": "/api/3/workflow_steps/b6057717-773e-4cb2-b98b-32828587370d",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "130fc265-c30b-461d-8169-4f378f602d61"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Verify DestIP Type -> Abort DestIP Is Private",
+              "targetStep": "/api/3/workflow_steps/7403e603-f211-4b3c-97cc-1444c0615c27",
+              "sourceStep": "/api/3/workflow_steps/0f789672-b9f8-423b-89e8-136eea930321",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "cb6b2780-2916-4a09-8148-e088fc0626fe"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Verify DestIP Type -> Get DestIP Reputation",
+              "targetStep": "/api/3/workflow_steps/900997d0-d448-4689-bdf9-a64b45725325",
+              "sourceStep": "/api/3/workflow_steps/0f789672-b9f8-423b-89e8-136eea930321",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "ced69a0d-2bde-4fe6-92c0-af32c6334474"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Verify Threat Details -> Abort No Threat",
+              "targetStep": "/api/3/workflow_steps/6e97debf-16c5-4e6d-bc39-810f581e4f8e",
+              "sourceStep": "/api/3/workflow_steps/fb648e84-4931-44f3-8024-366d1693260d",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "4fb3399a-1b99-4398-b74e-abc2b276bbc7"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Verify Threat Details -> Update Incident",
+              "targetStep": "/api/3/workflow_steps/cfb6fa30-4eac-489b-95e0-e5c57699945d",
+              "sourceStep": "/api/3/workflow_steps/fb648e84-4931-44f3-8024-366d1693260d",
+              "label": "",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "f3e9a00a-f1f6-44c3-b153-42d8aeefed0b"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "b73c504a-58ef-4969-a820-1c7f8070d2d6",
+          "id": 633,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "augur",
+            "domain scan",
+            "filehash scan",
+            "ip scan",
+            "security scan"
           ]
         },
         {
@@ -403,7 +1385,7 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "d11b0b2c-4dee-4104-8c05-f62ee39811c2",
-          "id": 546,
+          "id": 630,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -500,7 +1482,7 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "d755f86e-5b72-4919-9e30-ce10390c21a1",
-          "id": 547,
+          "id": 631,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -516,6 +1498,11 @@
   "exported_tags": [
     "Augur",
     "augur-preempive-detection",
-    "augur-premptive-detection"
+    "augur-premptive-detection",
+    "augur",
+    "domain scan",
+    "filehash scan",
+    "ip scan",
+    "security scan"
   ]
 }

@@ -1,8 +1,16 @@
 # Augur FortiSOAR Connector
 
-This is Augur integration with Fortinet's FortiSoar product.  It provides:
-    - Get IP, Domain, Host, or File hash from the Augur API.
-    - Download Augur Prediction data from the API (for security orchestration)
+This is Augur integration with Fortinet's FortiSoar product.  
+It provides:
+    - Get IP, Domain, Host, or File hash reputation from the Augur API.
+    - Download Augur Predictions data from the API (for security orchestration)
+    - It contains a sample playbook collection which includes the following playbooks:
+        - Augur Security Incident Scan
+        - Get IP Reputation
+        - Get Domain Reputation
+        - Get Host Reputation
+        - Get File Reputation
+        - Download Predictions
 
 ### Build
     - The code is built and tested on FortiSOAR v7.0.1-628 from our AWS instance.
@@ -17,7 +25,7 @@ This is Augur integration with Fortinet's FortiSoar product.  It provides:
 
 ### Deployment
     - The directory of the project is compressed into tgz file with tar command.
-    - The tgz file can be imported by FortiSOAR
+    - The tgz file can be imported by FortiSOAR.
 
 ### Change log
     - v1.0.1: The initial version.

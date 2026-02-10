@@ -1,6 +1,6 @@
 """This is the utility module that contains some common functionalities.
 
-Copyright (C) 2014 - 2025 Augur Security Inc. All rights reserved.
+Copyright (C) 2014 - 2026 Augur Security Inc. All rights reserved.
 """
 import requests
 from connectors.core.connector import (

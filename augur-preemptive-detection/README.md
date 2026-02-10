@@ -4,7 +4,7 @@ This is Augur integration with Fortinet's FortiSoar product.
 It provides:
     - Get IP, Domain, Host, or File hash reputation from the Augur API.
     - Download Augur Predictions data from the API (for security orchestration)
-    - It contains a sample playbook collection which includes the following playbooks:
+    - Sample playbook collection which includes the following playbooks:
         - Augur Security Incident Scan
         - Get IP Reputation
         - Get Domain Reputation

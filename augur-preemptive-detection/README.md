@@ -6,6 +6,7 @@ It provides:
     - Download Augur Predictions data from the API (for security orchestration)
     - Sample playbook collection which includes the following playbooks:
         - Augur Security Incident Scan
+        - Augur Security Alert Scan
         - Get IP Reputation
         - Get Domain Reputation
         - Get Host Reputation
